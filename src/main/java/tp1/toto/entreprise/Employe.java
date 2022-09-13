@@ -10,6 +10,10 @@ public abstract class Employe {
 
     public abstract double getSalaire();
 
+    public String getNom() {
+        return nom;
+    }
+
     @Override
     public String toString() {
         return nom + " gagne " + getSalaire() + " €.";
