@@ -2,10 +2,7 @@ package tp1;
 
 import tp1.toto.entreprise.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 
 public class Paie {
@@ -39,5 +36,29 @@ public class Paie {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        try {
+            commercial.readFromFile(new FileReader(new File("commercial.txt")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        try{
+            DataOutputStream out = new DataOutputStream( new BufferedOutputStream( new FileOutputStream("bin.txt") ) );
+            commercial.saveToFileBinary(out);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            DataInputStream in5 = new DataInputStream( new BufferedInputStream( new FileInputStream("bin.txt")));
+            commercial.readFromFileBinary(in5);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
