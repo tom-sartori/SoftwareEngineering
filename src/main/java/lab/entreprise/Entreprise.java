@@ -1,10 +1,13 @@
 package lab.entreprise;
 
+import lab.entreprise.comparator.SalaryComparator;
 import lab.entreprise.employe.Commercial;
 import lab.entreprise.employe.Employe;
 import lab.entreprise.exception.EntrepriseSatureDeCommerciauxException;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class Entreprise {
@@ -16,7 +19,7 @@ public class Entreprise {
     public Entreprise(int nbMaxCommerciaux) {
         this.nbMaxCommerciaux = nbMaxCommerciaux;
         this.employeList = new ArrayList<>();
-        this.nbCommerciaux=0;
+        this.nbCommerciaux = 0;
     }
 
     public void addEmploye(Employe employe) throws EntrepriseSatureDeCommerciauxException {
@@ -40,12 +43,20 @@ public class Entreprise {
         employeList.remove(employe);
     }
 
+    public Iterator<Employe> iterEmployeList() {
+        return employeList.iterator();
+    }
+
     public int getNbMaxCommerciaux() {
         return nbMaxCommerciaux;
     }
 
     public List<Employe> getEmployeList() {
         return employeList;
+    }
+
+    public void setEmployeList(List<Employe> employeList) {
+        this.employeList = employeList;
     }
 
     @Override

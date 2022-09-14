@@ -1,11 +1,17 @@
 package lab.entreprise;
 
+import lab.entreprise.comparator.SalaryComparator;
 import lab.entreprise.employe.Commercial;
 import lab.entreprise.employe.Directeur;
+import lab.entreprise.employe.Employe;
 import lab.entreprise.employe.EmployeHoraire;
 import lab.entreprise.exception.EntrepriseSatureDeCommerciauxException;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class Paie {
@@ -33,8 +39,16 @@ public class Paie {
         }
 
         Directeur directeur = Directeur.createDirecteur("Directeur", 10000, entreprise);
+        Collections.sort(entreprise.getEmployeList());
         System.out.println(directeur);
 
+        System.out.println("Total salaire entreprise 0: " + calculSumSalaries(entreprise));
+
+        entreprise.getEmployeList().sort(new SalaryComparator().reversed());
+        System.out.println(entreprise);
+
+
+        System.out.println("------------------------------------------");
 
 
         // Second enterprise.
@@ -45,7 +59,33 @@ public class Paie {
         } catch (EntrepriseSatureDeCommerciauxException e) {
             throw new RuntimeException(e);
         }
+        Collections.sort(entreprise1.getEmployeList());
         System.out.println(entreprise1);
+
+        System.out.println("Total salaire entreprise 1: " + calculSumSalaries(entreprise1));
+
+
+        entreprise1.getEmployeList().sort(new SalaryComparator());
+        System.out.println(entreprise1);
+
+
+        System.out.println("------------------------------------------");
+
+
+        List<Employe> bothEmployeList = new ArrayList<>();
+        bothEmployeList.addAll(entreprise.getEmployeList());
+        bothEmployeList.addAll(entreprise1.getEmployeList());
+        Collections.sort(bothEmployeList);
+        System.out.println(bothEmployeList);
+    }
+
+    public static double calculSumSalaries(Entreprise entreprise) {
+        double totalEntreprise = 0;
+        Iterator<Employe> employeIterator = entreprise.iterEmployeList();
+        while (employeIterator.hasNext()) {
+            totalEntreprise += employeIterator.next().getSalaire();
+        }
+        return totalEntreprise;
     }
 
     public static void lab2InOut(Commercial commercial) {

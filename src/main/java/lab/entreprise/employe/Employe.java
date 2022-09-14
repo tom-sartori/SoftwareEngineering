@@ -1,6 +1,6 @@
 package lab.entreprise.employe;
 
-public abstract class Employe {
+public abstract class Employe implements Comparable<Employe> {
 
     private final String nom;
 
@@ -17,5 +17,10 @@ public abstract class Employe {
     @Override
     public String toString() {
         return nom + " gagne " + getSalaire() + " €.";
+    }
+
+    @Override
+    public int compareTo(Employe o) {
+        return nom.compareTo(o.nom);
     }
 }
