@@ -22,7 +22,7 @@ public class Directeur extends Employe {
 
     @Override
     public double getSalaire() {
-        double totalChiffreAffaires = entreprise.getEmployes().stream()
+        double totalChiffreAffaires = entreprise.getEmployeList().stream()
                 .filter(e -> e instanceof Commercial)
                 .mapToDouble(e -> ((Commercial) e).getChiffreAffaires())
                 .sum();

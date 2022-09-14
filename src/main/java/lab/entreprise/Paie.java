@@ -1,11 +1,9 @@
 package lab.entreprise;
 
-import lab.entreprise.*;
 import lab.entreprise.employe.Commercial;
 import lab.entreprise.employe.Directeur;
 import lab.entreprise.employe.EmployeHoraire;
 import lab.entreprise.exception.EntrepriseSatureDeCommerciauxException;
-import lab.toto.entreprise.*;
 
 import java.io.*;
 
@@ -13,6 +11,8 @@ import java.io.*;
 public class Paie {
 
     public static void main(String[] args) {
+
+        // First enterprise.
         Entreprise entreprise = new Entreprise(2);
 
         Commercial commercial = new Commercial("John", 15000, 1000);
@@ -36,6 +36,19 @@ public class Paie {
         System.out.println(directeur);
 
 
+
+        // Second enterprise.
+        Entreprise entreprise1 = new Entreprise(10);
+        try {
+            entreprise1.addEmploye(new EmployeHoraire("Jean", 30, 1.3, 10));
+            entreprise1.addEmploye(new Commercial("Jeannot", 15000, 1000));
+        } catch (EntrepriseSatureDeCommerciauxException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(entreprise1);
+    }
+
+    public static void lab2InOut(Commercial commercial) {
         try {
             commercial.saveToFile(new FileWriter("commercial.txt"));
         } catch (IOException e) {
@@ -47,8 +60,9 @@ public class Paie {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
-
+    public static void lab2InOutBinary(Commercial commercial) {
         try{
             DataOutputStream out = new DataOutputStream( new BufferedOutputStream( new FileOutputStream("bin.txt") ) );
             commercial.saveToFileBinary(out);
@@ -59,11 +73,8 @@ public class Paie {
         try{
             DataInputStream in5 = new DataInputStream( new BufferedInputStream( new FileInputStream("bin.txt")));
             commercial.readFromFileBinary(in5);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

@@ -8,43 +8,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Entreprise {
-    private List<Employe> employes;
+    private List<Employe> employeList;
     private final int nbMaxCommerciaux;
     private int nbCommerciaux;
 
 
     public Entreprise(int nbMaxCommerciaux) {
         this.nbMaxCommerciaux = nbMaxCommerciaux;
-        this.employes = new ArrayList<>();
+        this.employeList = new ArrayList<>();
         this.nbCommerciaux=0;
     }
 
     public void addEmploye(Employe employe) throws EntrepriseSatureDeCommerciauxException {
         if(employe instanceof Commercial) {
             if (nbCommerciaux < nbMaxCommerciaux) {
-                employes.add(employe);
+                employeList.add(employe);
                 nbCommerciaux++;
             }
             else{
                 throw new EntrepriseSatureDeCommerciauxException(this);
             }
         }else{
-            employes.add(employe);
+            employeList.add(employe);
         }
+    }
+
+    public void removeEmploye(Employe employe) {
+        if(employe instanceof Commercial) {
+            nbCommerciaux--;
+        }
+        employeList.remove(employe);
     }
 
     public int getNbMaxCommerciaux() {
         return nbMaxCommerciaux;
     }
 
-    public List<Employe> getEmployes() {
-        return employes;
+    public List<Employe> getEmployeList() {
+        return employeList;
     }
 
     @Override
     public String toString() {
         return "Entreprise{" +
-                "employes=" + employes +
+                "employes=" + employeList +
                 ", nbMaxCommerciaux=" + nbMaxCommerciaux +
                 ", nbCommerciaux=" + nbCommerciaux +
                 '}';
