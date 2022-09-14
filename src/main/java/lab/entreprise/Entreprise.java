@@ -1,4 +1,8 @@
-package tp1.toto.entreprise;
+package lab.entreprise;
+
+import lab.entreprise.employe.Commercial;
+import lab.entreprise.employe.Employe;
+import lab.entreprise.exception.EntrepriseSatureDeCommerciauxException;
 
 import java.util.ArrayList;
 import java.util.List;

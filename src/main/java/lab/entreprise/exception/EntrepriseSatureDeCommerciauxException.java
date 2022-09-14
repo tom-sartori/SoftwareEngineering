@@ -1,4 +1,6 @@
-package tp1.toto.entreprise;
+package lab.entreprise.exception;
+
+import lab.entreprise.Entreprise;
 
 public class EntrepriseSatureDeCommerciauxException extends Exception {
 

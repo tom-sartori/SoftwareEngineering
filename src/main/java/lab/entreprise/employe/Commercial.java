@@ -1,9 +1,6 @@
-package tp1.toto.entreprise;
+package lab.entreprise.employe;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.StringTokenizer;
 
 

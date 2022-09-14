@@ -1,4 +1,4 @@
-package tp1.toto.entreprise;
+package lab.entreprise.employe;
 
 public abstract class Employe {
 

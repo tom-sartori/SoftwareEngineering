@@ -1,6 +1,11 @@
-package tp1;
+package lab.entreprise;
 
-import tp1.toto.entreprise.*;
+import lab.entreprise.*;
+import lab.entreprise.employe.Commercial;
+import lab.entreprise.employe.Directeur;
+import lab.entreprise.employe.EmployeHoraire;
+import lab.entreprise.exception.EntrepriseSatureDeCommerciauxException;
+import lab.toto.entreprise.*;
 
 import java.io.*;
 

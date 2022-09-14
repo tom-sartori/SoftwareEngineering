@@ -1,4 +1,4 @@
-package tp1;
+package lab.bookmark;
 
 import java.io.*;
 import java.net.URL;

@@ -1,5 +1,7 @@
-package tp1.toto.entreprise;
+package lab.entreprise.employe;
 
+
+import lab.entreprise.Entreprise;
 
 public class Directeur extends Employe {
 

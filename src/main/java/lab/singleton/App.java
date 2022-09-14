@@ -1,6 +1,4 @@
-package tp1.toto.entreprise;
-
-import tp1.Singleton;
+package lab.singleton;
 
 public class App {
 

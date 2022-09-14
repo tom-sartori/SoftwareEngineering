@@ -1,6 +1,6 @@
-package tp1.toto.entreprise;
+package lab.entreprise.employe;
 
-import tp1.toto.entreprise.Employe;
+import lab.entreprise.employe.Employe;
 
 public class EmployeHoraire extends Employe {
 
