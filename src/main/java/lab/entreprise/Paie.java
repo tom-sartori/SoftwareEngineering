@@ -1,5 +1,6 @@
 package lab.entreprise;
 
+import lab.entreprise.comparator.ORDER;
 import lab.entreprise.comparator.SalaryComparator;
 import lab.entreprise.employe.Commercial;
 import lab.entreprise.employe.Directeur;
@@ -44,7 +45,7 @@ public class Paie {
 
         System.out.println("Total salaire entreprise 0: " + calculSumSalaries(entreprise));
 
-        entreprise.getEmployeList().sort(new SalaryComparator().reversed());
+        entreprise.getEmployeList().sort(new SalaryComparator(ORDER.DESC));
         System.out.println(entreprise);
 
 
