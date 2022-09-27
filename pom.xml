@@ -39,7 +39,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>App</mainClass>
+                    <mainClass>exercise1.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>

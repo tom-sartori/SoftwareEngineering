@@ -1,0 +1,7 @@
+.button {
+    -fx-background-color: green;
+}
+
+.button:focused {
+    -fx-background-color: yellow;
+}
