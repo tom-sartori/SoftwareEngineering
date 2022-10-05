@@ -431,8 +431,7 @@ public abstract class AbstractServer implements Runnable
    * @param client the connection connected to the client that
    *  sent the message.
    */
-  protected abstract void handleMessageFromClient(
-    Object msg, ConnectionToClient client);
+  protected abstract void handleMessageFromClient(Object msg, ConnectionToClient client);
 
 
 // METHODS TO BE USED FROM WITHIN THE FRAMEWORK ONLY ----------------
@@ -449,8 +448,7 @@ public abstract class AbstractServer implements Runnable
    * @param client the connection connected to the client that
    *  sent the message.
    */
-  final synchronized void receiveMessageFromClient(
-    Object msg, ConnectionToClient client)
+  final synchronized void receiveMessageFromClient(Object msg, ConnectionToClient client)
   {
     this.handleMessageFromClient(msg, client);
   }
