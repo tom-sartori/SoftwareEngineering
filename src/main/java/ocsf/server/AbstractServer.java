@@ -364,7 +364,7 @@ public abstract class AbstractServer implements Runnable
    * accepted. The default implementation does nothing.
    * @param client the connection connected to the client.
    */
-  protected void clientConnected(ConnectionToClient client) {}
+  protected void clientConnected(ConnectionToClient client) { }
 
   /**
    * Hook method called each time a client disconnects.
@@ -373,8 +373,7 @@ public abstract class AbstractServer implements Runnable
    *
    * @param client the connection with the client.
    */
-  synchronized protected void clientDisconnected(
-    ConnectionToClient client) {}
+  synchronized protected void clientDisconnected(ConnectionToClient client) { }
 
   /**
    * Hook method called each time an exception is thrown in a
@@ -383,10 +382,9 @@ public abstract class AbstractServer implements Runnable
    * synchronized.
    *
    * @param client the client that raised the exception.
-   * @param Throwable the exception thrown.
+   * @param exception the exception thrown.
    */
-  synchronized protected void clientException(
-    ConnectionToClient client, Throwable exception) {}
+  synchronized protected void clientException(ConnectionToClient client, Throwable exception) { }
 
   /**
    * Hook method called when the server stops accepting
