@@ -62,7 +62,6 @@ public class ServerConsole implements ChatIF {
 
         try
         {
-            sv.listen(); //Start listening for connections
             serverConsole.accept();
         }
         catch (Exception ex)
