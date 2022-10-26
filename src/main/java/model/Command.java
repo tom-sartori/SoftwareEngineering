@@ -19,7 +19,6 @@ public class Command {
 
         if (hasMatch(regex, message)) {
             List<String> allArgumentList = getGroup(regex, message);
-            System.out.println(allArgumentList.stream().toList());
             this.command = allArgumentList.get(1);
             this.argumentList = allArgumentList.subList(2, allArgumentList.size());
 

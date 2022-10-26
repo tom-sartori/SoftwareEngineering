@@ -16,6 +16,10 @@ public class ServerConsole implements ChatIF {
         System.out.println(message);
     }
 
+    public EchoServer getEchoServer() {
+        return echoServer;
+    }
+
     /**
      * This method waits for input from the console.  Once it is
      * received, it sends it to the client's message handler.
@@ -33,11 +37,6 @@ public class ServerConsole implements ChatIF {
             System.out.println("Unexpected error while reading from console!");
         }
     }
-
-    public EchoServer getEchoServer() {
-        return echoServer;
-    }
-
 
     /**
      * This method is responsible for the creation of
@@ -60,8 +59,6 @@ public class ServerConsole implements ChatIF {
         }
 
         ServerConsole serverConsole = new ServerConsole();
-
-        EchoServer sv = serverConsole.getEchoServer();
 
         try
         {
