@@ -11,7 +11,7 @@ public class Command {
     private String command;             // login
     private List<String> argumentList;  // Jean
 
-    private static String regex = " *#(\\S*) +(\\S*)";
+    private final static String regex = " *#(\\S*)( +(\\S*))*";
 
     public Command(String message) {
         this.message = message;
