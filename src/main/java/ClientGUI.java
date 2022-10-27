@@ -15,6 +15,7 @@ import client.ChatClient;
 import common.ChatIF;
 
 import javax.swing.*;
+import javax.swing.event.AncestorListener;
 
 import static java.lang.Thread.sleep;
 
@@ -68,7 +69,7 @@ public class ClientGUI extends JFrame implements ChatIF {
             }
 
 
-            setSize(1920, 1080); // ou setBounds(...);
+            setSize(600, 600); // ou setBounds(...);
 
             Container contentPane = getContentPane();
 
@@ -101,25 +102,28 @@ public class ClientGUI extends JFrame implements ChatIF {
             JPanel sendMessagesPanel = new JPanel();
             sendMessagesPanel.setLayout(new GridLayout(1,2));
 
-            JTextArea sendMessageTextArea = new JTextArea();
+            JTextField sendMessageTextField = new JTextField();
+            sendMessageTextField.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    client.handleMessageFromClientUI(sendMessageTextField.getText());
+                    sendMessageTextField.setText("");
+                }
+            });
 
             JButton sendButton = new JButton("Send");
             sendButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if(sendMessageTextArea.getText().equals("#disco")){
-                    }
-                    else{
-                        client.handleMessageFromClientUI(sendMessageTextArea.getText());
-                        sendMessageTextArea.setText("");
-                    }
+                    client.handleMessageFromClientUI(sendMessageTextField.getText());
+                    sendMessageTextField.setText("");
                 }
             });
 
             JLabel writeMessageLabel = new JLabel("Write your message below :");
             southPanel.add(writeMessageLabel);
 
-            sendMessagesPanel.add(sendMessageTextArea);
+            sendMessagesPanel.add(sendMessageTextField);
             sendMessagesPanel.add(sendButton);
 
 
@@ -138,6 +142,7 @@ public class ClientGUI extends JFrame implements ChatIF {
             contentPane.add(southPanel, BorderLayout.SOUTH);
 
             jTextArea.append("Bienvenue sur notre application de chat ! Pensez à vous login avec la commande #login <pseudo> afin de pouvoir utiliser le chat, sans celà vous serez automatiquement déconnecté.\nUtilisez #help pour voir les commandes disponibles !\n");
+            client.handleMessageFromClientUI("#help");
 
             setVisible(true); // ou show(), // affiche la fenêtre
         }

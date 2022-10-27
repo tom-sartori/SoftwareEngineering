@@ -18,7 +18,7 @@ public class ServerGUI extends JFrame implements ChatIF {
         this.echoServer = new EchoServer(5555, this);
 
 
-        setSize(1920, 1080); // ou setBounds(...);
+        setSize(600, 600); // ou setBounds(...);
 
         Container contentPane = getContentPane();
 
@@ -52,21 +52,28 @@ public class ServerGUI extends JFrame implements ChatIF {
         JPanel sendMessagesPanel = new JPanel();
         sendMessagesPanel.setLayout(new GridLayout(1,2));
 
-        JTextArea sendMessageTextArea = new JTextArea();
+        JTextField sendMessageTextField = new JTextField();
+        sendMessageTextField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                echoServer.handleMessageFromServerUI(sendMessageTextField.getText());
+                sendMessageTextField.setText("");
+            }
+        });
 
         JButton sendButton = new JButton("Send");
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                echoServer.handleMessageFromServerUI(sendMessageTextArea.getText());
-                sendMessageTextArea.setText("");
+                echoServer.handleMessageFromServerUI(sendMessageTextField.getText());
+                sendMessageTextField.setText("");
             }
         });
 
         JLabel writeMessageLabel = new JLabel("Write your message below :");
         southPanel.add(writeMessageLabel);
 
-        sendMessagesPanel.add(sendMessageTextArea);
+        sendMessagesPanel.add(sendMessageTextField);
         sendMessagesPanel.add(sendButton);
 
 
@@ -86,7 +93,7 @@ public class ServerGUI extends JFrame implements ChatIF {
         contentPane.add(southPanel, BorderLayout.SOUTH);
 
         jTextArea.append("Bienvenue sur le serveur, envoyez #start pour lancer l'écoute de nouveaux utilisateurs.\nUtilisez #help pour voir les commandes disponibles !\n");
-
+        echoServer.handleMessageFromServerUI("#help");
         setVisible(true); // ou show(), // affiche la fenêtre
     }
 
