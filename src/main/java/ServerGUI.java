@@ -82,6 +82,8 @@ public class ServerGUI extends JFrame implements ChatIF {
 
         contentPane.add(southPanel, BorderLayout.SOUTH);
 
+        jTextArea.append("Bienvenue sur le serveur, envoyez #start pour lancer l'écoute de nouveaux utilisateurs\n");
+
         setVisible(true); // ou show(), // affiche la fenêtre
     }
 
