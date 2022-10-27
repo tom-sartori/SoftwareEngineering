@@ -87,7 +87,9 @@ public class ClientGUI extends JFrame implements ChatIF {
              */
 
             this.jTextArea = new JTextArea();
-            contentPane.add(jTextArea, BorderLayout.CENTER);  // Text area middle.
+            JScrollPane scrollPane = new JScrollPane(this.jTextArea);
+            scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            contentPane.add(scrollPane, BorderLayout.CENTER);  // Text area middle.
 
             /**
              *  SOUTH PANE WITH TEXTAREA , SEND BUTTON AND QUIT BUTTON
