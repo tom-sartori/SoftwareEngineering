@@ -135,7 +135,7 @@ public class ClientGUI extends JFrame implements ChatIF {
 
             contentPane.add(southPanel, BorderLayout.SOUTH);
 
-            jTextArea.append("Bienvenue sur notre application de chat ! Pensez à vous login avec la commande #login <pseudo> afin de pouvoir utiliser le chat, sans celà vous serez automatiquement déconnecté\n");
+            jTextArea.append("Bienvenue sur notre application de chat ! Pensez à vous login avec la commande #login <pseudo> afin de pouvoir utiliser le chat, sans celà vous serez automatiquement déconnecté.\nUtilisez #help pour voir les commandes disponibles !\n");
 
             setVisible(true); // ou show(), // affiche la fenêtre
         }

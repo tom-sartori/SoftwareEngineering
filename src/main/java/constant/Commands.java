@@ -14,4 +14,5 @@ public final class Commands {
     public final static String STOP = "stop";
     public final static String CLOSE = "close";
     public final static String START = "start";
+    public final static String HELP = "help";
 }
