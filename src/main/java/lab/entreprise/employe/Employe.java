@@ -1,24 +1,24 @@
 package lab.entreprise.employe;
 
+import lab.entreprise.comparator.ORDER;
+
 public abstract class Employe implements Comparable<Employe> {
 
     private final String nom;
 
-    private int order;
-    private final static int ASC_ORDER = 1;
-    private final static int DESC_ORDER = -1;
+    private ORDER order;
 
     public Employe(String nom) {
-        this.order = ASC_ORDER;
+        this.order = ORDER.ASC;
         this.nom = nom;
     }
 
     public void setAscOrder() {
-        this.order = ASC_ORDER;
+        this.order = ORDER.ASC;
     }
 
     public void setDescOrder() {
-        this.order = DESC_ORDER;
+        this.order = ORDER.DESC;
     }
 
     public abstract double getSalaire();
@@ -34,6 +34,6 @@ public abstract class Employe implements Comparable<Employe> {
 
     @Override
     public int compareTo(Employe o) {
-        return order * nom.compareTo(o.nom);
+        return order.getValue() * nom.compareTo(o.nom);
     }
 }
